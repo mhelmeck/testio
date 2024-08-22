@@ -31,6 +31,7 @@
 		8943094B2C777F7700C30DB8 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943094A2C777F7700C30DB8 /* DependencyContainer.swift */; };
 		8943094D2C77844E00C30DB8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943094C2C77844E00C30DB8 /* HomeViewModel.swift */; };
 		8943094F2C77894400C30DB8 /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943094E2C77894400C30DB8 /* UserDefaultStorage.swift */; };
+		894309512C779C0300C30DB8 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309502C779C0300C30DB8 /* AuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		8943094A2C777F7700C30DB8 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		8943094C2C77844E00C30DB8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8943094E2C77894400C30DB8 /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
+		894309502C779C0300C30DB8 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 		894309402C776E2600C30DB8 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				894309502C779C0300C30DB8 /* AuthService.swift */,
 				894309452C7778CE00C30DB8 /* DefaultAuthService.swift */,
 			);
 			path = Service;
@@ -365,6 +368,7 @@
 				8943094F2C77894400C30DB8 /* UserDefaultStorage.swift in Sources */,
 				8943093D2C776DE200C30DB8 /* PlaygroundNetwork.swift in Sources */,
 				8901DDEA2C77481F005E5DA3 /* Coordinator.swift in Sources */,
+				894309512C779C0300C30DB8 /* AuthService.swift in Sources */,
 				8901DDBC2C772711005E5DA3 /* HomeViewController.swift in Sources */,
 				894309332C776D6700C30DB8 /* Credentials.swift in Sources */,
 				894309422C77749400C30DB8 /* LoginViewModel.swift in Sources */,

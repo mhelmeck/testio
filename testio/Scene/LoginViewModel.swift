@@ -12,6 +12,12 @@ class LoginViewModel {
     init(coordinator: LoginCoordinatorDelegate, authService: AuthService) {
         self.coordinator = coordinator
         self.authService = authService
+        
+        print("my_log init LoginViewModel")
+    }
+    
+    deinit {
+        print("my_log deinit LoginViewModel")
     }
     
     // MARK: - Methods

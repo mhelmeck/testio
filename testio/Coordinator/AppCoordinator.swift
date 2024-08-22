@@ -15,6 +15,12 @@ class AppCoordinator: Coordinator, LoginCoordinatorDelegate, HomeCoordinatorDele
         self.root = root
         self.dependencies = dependencies
         self.authService = dependencies.get()
+        
+        print("my_log init AppCoordinator")
+    }
+    
+    deinit {
+        print("my_log deinit AppCoordinator")
     }
     
     // MARK: - Methods

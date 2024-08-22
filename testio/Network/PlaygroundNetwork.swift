@@ -1,7 +1,16 @@
 import Foundation
 
 class PlaygroundNetwork: Network {
-        
+    
+    // MARK: - Init
+    
+    init() {
+        print("my_log init PlaygroundNetwork")
+    }
+    deinit {
+        print("my_log deinit PlaygroundNetwork")
+    }
+    
     // MARK: - Api
     
     func getSession(credentials: Credentials) async throws -> UserSession {

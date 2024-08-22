@@ -12,6 +12,12 @@ class HomeViewController: UIViewController {
         self.viewModel = viewModel
         
         super.init(nibName: nil, bundle: nil)
+        
+        print("my_log init HomeViewController")
+    }
+    
+    deinit {
+        print("my_log deinit HomeViewController")
     }
     
     required init?(coder: NSCoder) {

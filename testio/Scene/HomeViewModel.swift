@@ -12,6 +12,12 @@ class HomeViewModel {
     init(coordinator: HomeCoordinatorDelegate, authService: AuthService) {
         self.coordinator = coordinator
         self.authService = authService
+        
+        print("my_log init HomeViewModel")
+    }
+    
+    deinit {
+        print("my_log deinit HomeViewModel")
     }
     
     // MARK: - Methods

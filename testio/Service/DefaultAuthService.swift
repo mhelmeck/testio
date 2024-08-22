@@ -1,9 +1,3 @@
-protocol AuthService {
-    func login(with credentials: Credentials) async throws
-    func logout()
-    func isLoggedIn() -> Bool
-}
-
 class DefaultAuthService: AuthService {
     
     // MARK: - Properties
@@ -11,12 +5,17 @@ class DefaultAuthService: AuthService {
     private let network: Network
     private let storage: Storage
    
-    
     // MARK: - Init
     
     init(network: Network, storage: Storage) {
         self.network = network
         self.storage = storage
+        
+        print("my_log init DefaultAuthService")
+    }
+    
+    deinit {
+        print("my_log deinit DefaultAuthService")
     }
     
     // MARK: - Api
@@ -29,7 +28,7 @@ class DefaultAuthService: AuthService {
     func logout() {
         storage.deleteToken()
     }
-    
+
     func isLoggedIn() -> Bool {
         guard let token = storage.readToken() else {
             return false
