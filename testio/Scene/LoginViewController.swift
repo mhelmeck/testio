@@ -27,8 +27,8 @@ class LoginViewController: UIViewController {
     }
     
     private func setupView() {
-        title = "Login"
-        view.backgroundColor = .systemMint
+        title = "Testio."
+        view.backgroundColor = .white
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             title: "Logout", style: .done, target: viewModel, action: #selector(viewModel.logout))

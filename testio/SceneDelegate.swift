@@ -36,16 +36,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 extension SceneDelegate {
     private func createAndSetupRoot() -> UINavigationController {
+        let root = UINavigationController()
+        
         let appearance = UINavigationBarAppearance()
-        appearance.titleTextAttributes = [
-            .foregroundColor: UIColor.white
-        ]
+        appearance.backgroundColor = .clear
+        appearance.backgroundEffect = UIBlurEffect(style: .extraLight)
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
         
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().compactAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        root.navigationBar.standardAppearance = appearance
+        root.navigationBar.scrollEdgeAppearance = appearance
         
-        return UINavigationController()
+        return root
     }
     
     private func createAndSetupDependencies() -> DependencyContainer {
