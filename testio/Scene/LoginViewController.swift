@@ -26,12 +26,15 @@ class LoginViewController: UIViewController {
         setupView()
     }
     
-    private func setupView() {
-        title = "Testio."
-        view.backgroundColor = .white
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            title: "Logout", style: .done, target: viewModel, action: #selector(viewModel.logout))
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    private func setupView() {
+        view.backgroundColor = .systemBlue
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Login", style: .done, target: viewModel, action: #selector(viewModel.login))
     }

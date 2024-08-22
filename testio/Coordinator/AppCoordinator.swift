@@ -17,11 +17,13 @@ class AppCoordinator: Coordinator {
     // MARK: - Methods
     
     func start() {
-        showLogin()
+        showHome()
+//        showLogin()
     }
     
     private func showHome() {
-        let vc = HomeViewController()
+        let vm = HomeViewModel(network: dependencies.get())
+        let vc = HomeViewController(viewModel: vm)
         
         root.viewControllers = [vc]
     }
