@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
     
     private func setupView() {
         title = "Login"
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBlue
     }
 }
 
