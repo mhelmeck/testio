@@ -24,39 +24,15 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
-        viewModel.printServers()
     }
     
     private func setupView() {
         title = "Login"
-        view.backgroundColor = .systemBlue
-    }
-}
-
-import Foundation
-
-class LoginViewModel {
-    
-    // MARK: - Properties
-    let network: Networking
-    
-    // MARK: - Init
-    
-    init(network: Networking) {
-        self.network = network
-    }
-    
-    // MARK: - Methods
-    
-    func printServers() {
-        Task {
-            do {
-                let userSession = try await network.getSession(credentials: Credentials())
-                let servers = try await network.getServerList(token: userSession.token)
-                print("my_log servers: \(servers)")
-            } catch {
-                print("my_log error: \(error)")
-            }
-        }
+        view.backgroundColor = .systemMint
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            title: "Logout", style: .done, target: viewModel, action: #selector(viewModel.logout))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Login", style: .done, target: viewModel, action: #selector(viewModel.login))
     }
 }

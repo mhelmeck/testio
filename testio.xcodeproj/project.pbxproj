@@ -25,6 +25,7 @@
 		8943093B2C776DC700C30DB8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943093A2C776DC700C30DB8 /* NetworkError.swift */; };
 		8943093D2C776DE200C30DB8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943093C2C776DE200C30DB8 /* Network.swift */; };
 		8943093F2C776E0A00C30DB8 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943093E2C776E0A00C30DB8 /* Storage.swift */; };
+		894309422C77749400C30DB8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309412C77749400C30DB8 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		8943093A2C776DC700C30DB8 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		8943093C2C776DE200C30DB8 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		8943093E2C776E0A00C30DB8 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		894309412C77749400C30DB8 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 			children = (
 				8901DDBB2C772711005E5DA3 /* HomeViewController.swift */,
 				8901DDED2C774C4F005E5DA3 /* LoginViewController.swift */,
+				894309412C77749400C30DB8 /* LoginViewModel.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				8901DDEA2C77481F005E5DA3 /* Coordinator.swift in Sources */,
 				8901DDBC2C772711005E5DA3 /* HomeViewController.swift in Sources */,
 				894309332C776D6700C30DB8 /* Credentials.swift in Sources */,
+				894309422C77749400C30DB8 /* LoginViewModel.swift in Sources */,
 				8901DDEC2C77487F005E5DA3 /* AppCoordinator.swift in Sources */,
 				8901DDB82C772711005E5DA3 /* AppDelegate.swift in Sources */,
 				8901DDBA2C772711005E5DA3 /* SceneDelegate.swift in Sources */,
