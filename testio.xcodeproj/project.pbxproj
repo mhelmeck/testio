@@ -18,6 +18,13 @@
 		8901DDEA2C77481F005E5DA3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8901DDE92C77481F005E5DA3 /* Coordinator.swift */; };
 		8901DDEC2C77487F005E5DA3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8901DDEB2C77487F005E5DA3 /* AppCoordinator.swift */; };
 		8901DDEE2C774C4F005E5DA3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8901DDED2C774C4F005E5DA3 /* LoginViewController.swift */; };
+		894309332C776D6700C30DB8 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309322C776D6700C30DB8 /* Credentials.swift */; };
+		894309352C776D7000C30DB8 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309342C776D7000C30DB8 /* UserSession.swift */; };
+		894309372C776D7B00C30DB8 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309362C776D7B00C30DB8 /* Server.swift */; };
+		894309392C776DB400C30DB8 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309382C776DB400C30DB8 /* Networking.swift */; };
+		8943093B2C776DC700C30DB8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943093A2C776DC700C30DB8 /* NetworkError.swift */; };
+		8943093D2C776DE200C30DB8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943093C2C776DE200C30DB8 /* Network.swift */; };
+		8943093F2C776E0A00C30DB8 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943093E2C776E0A00C30DB8 /* Storage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +60,13 @@
 		8901DDE92C77481F005E5DA3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8901DDEB2C77487F005E5DA3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8901DDED2C774C4F005E5DA3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		894309322C776D6700C30DB8 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		894309342C776D7000C30DB8 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		894309362C776D7B00C30DB8 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		894309382C776DB400C30DB8 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		8943093A2C776DC700C30DB8 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		8943093C2C776DE200C30DB8 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		8943093E2C776E0A00C30DB8 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +117,12 @@
 		8901DDB62C772711005E5DA3 /* testio */ = {
 			isa = PBXGroup;
 			children = (
-				8901DDE82C7747FC005E5DA3 /* Coordinators */,
-				8901DDEF2C774C69005E5DA3 /* Scenes */,
+				8901DDF02C776C05005E5DA3 /* Network */,
+				8901DDF12C776C09005E5DA3 /* Persistance */,
+				894309402C776E2600C30DB8 /* Service */,
+				8901DDE82C7747FC005E5DA3 /* Coordinator */,
+				8901DDF22C776C0C005E5DA3 /* Model */,
+				8901DDEF2C774C69005E5DA3 /* Scene */,
 				8901DDC52C772713005E5DA3 /* Info.plist */,
 				8901DDB72C772711005E5DA3 /* AppDelegate.swift */,
 				8901DDB92C772711005E5DA3 /* SceneDelegate.swift */,
@@ -131,22 +149,57 @@
 			path = testioUITests;
 			sourceTree = "<group>";
 		};
-		8901DDE82C7747FC005E5DA3 /* Coordinators */ = {
+		8901DDE82C7747FC005E5DA3 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
 				8901DDE92C77481F005E5DA3 /* Coordinator.swift */,
 				8901DDEB2C77487F005E5DA3 /* AppCoordinator.swift */,
 			);
-			path = Coordinators;
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		8901DDEF2C774C69005E5DA3 /* Scenes */ = {
+		8901DDEF2C774C69005E5DA3 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
 				8901DDBB2C772711005E5DA3 /* HomeViewController.swift */,
 				8901DDED2C774C4F005E5DA3 /* LoginViewController.swift */,
 			);
-			path = Scenes;
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		8901DDF02C776C05005E5DA3 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				894309382C776DB400C30DB8 /* Networking.swift */,
+				8943093C2C776DE200C30DB8 /* Network.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		8901DDF12C776C09005E5DA3 /* Persistance */ = {
+			isa = PBXGroup;
+			children = (
+				8943093E2C776E0A00C30DB8 /* Storage.swift */,
+			);
+			path = Persistance;
+			sourceTree = "<group>";
+		};
+		8901DDF22C776C0C005E5DA3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				894309322C776D6700C30DB8 /* Credentials.swift */,
+				894309342C776D7000C30DB8 /* UserSession.swift */,
+				894309362C776D7B00C30DB8 /* Server.swift */,
+				8943093A2C776DC700C30DB8 /* NetworkError.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		894309402C776E2600C30DB8 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,11 +333,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				8901DDEE2C774C4F005E5DA3 /* LoginViewController.swift in Sources */,
+				894309392C776DB400C30DB8 /* Networking.swift in Sources */,
+				8943093D2C776DE200C30DB8 /* Network.swift in Sources */,
 				8901DDEA2C77481F005E5DA3 /* Coordinator.swift in Sources */,
 				8901DDBC2C772711005E5DA3 /* HomeViewController.swift in Sources */,
+				894309332C776D6700C30DB8 /* Credentials.swift in Sources */,
 				8901DDEC2C77487F005E5DA3 /* AppCoordinator.swift in Sources */,
 				8901DDB82C772711005E5DA3 /* AppDelegate.swift in Sources */,
 				8901DDBA2C772711005E5DA3 /* SceneDelegate.swift in Sources */,
+				894309372C776D7B00C30DB8 /* Server.swift in Sources */,
+				8943093B2C776DC700C30DB8 /* NetworkError.swift in Sources */,
+				894309352C776D7000C30DB8 /* UserSession.swift in Sources */,
+				8943093F2C776E0A00C30DB8 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +526,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -494,6 +555,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
