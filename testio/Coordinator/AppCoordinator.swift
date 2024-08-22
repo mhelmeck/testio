@@ -4,12 +4,14 @@ class AppCoordinator: Coordinator {
     
     // MARK: - Properties
     
-    var navigationController: UINavigationController
+    var root: UINavigationController
+    var dependencies: DependencyContainer
     
     // MARK: - Init
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(root: UINavigationController, dependencies: DependencyContainer ) {
+        self.root = root
+        self.dependencies = dependencies
     }
     
     // MARK: - Methods
@@ -21,14 +23,13 @@ class AppCoordinator: Coordinator {
     private func showHome() {
         let vc = HomeViewController()
         
-        navigationController.viewControllers = [vc]
+        root.viewControllers = [vc]
     }
     
     private func showLogin() {
-        let network = Network()
-        
-        let vm = LoginViewModel(network: network)
+        let vm = LoginViewModel(network: dependencies.get())
         let vc = LoginViewController(viewModel: vm)
-        navigationController.viewControllers = [vc]
+        
+        root.viewControllers = [vc]
     }
 }

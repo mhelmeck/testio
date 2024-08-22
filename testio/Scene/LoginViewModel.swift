@@ -3,11 +3,12 @@ import Foundation
 class LoginViewModel {
     
     // MARK: - Properties
-    let network: Networking
+    
+    private let network: Network
     
     // MARK: - Init
     
-    init(network: Networking) {
+    init(network: Network) {
         self.network = network
     }
     

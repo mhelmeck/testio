@@ -2,20 +2,24 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    // MARK: - Properties
+    
     var window: UIWindow?
     var appCoordinator: AppCoordinator?
 
+    // MARK: - Methods
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        setupNavigation()
+        let root = createAndSetupRoot()
+        let dependencies = createAndSetupDependencies()
         
-        let navigationController = UINavigationController()
-        appCoordinator = AppCoordinator(navigationController: navigationController)
+        appCoordinator = AppCoordinator(root: root, dependencies: dependencies)
         appCoordinator?.start()
         
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = navigationController
+        window?.rootViewController = root
         window?.makeKeyAndVisible()
     }
 
@@ -31,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 }
 
 extension SceneDelegate {
-    private func setupNavigation() {
+    private func createAndSetupRoot() -> UINavigationController {
         let appearance = UINavigationBarAppearance()
         appearance.titleTextAttributes = [
             .foregroundColor: UIColor.white
@@ -40,5 +44,16 @@ extension SceneDelegate {
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        
+        return UINavigationController()
+    }
+    
+    private func createAndSetupDependencies() -> DependencyContainer {
+        let dependencies = DependencyContainer()
+        dependencies.register(dependency: PlaygroundNetwork(), for: Network.self)
+        dependencies.register(dependency: UserDefaultStorage(), for: Storage.self)
+        dependencies.register(dependency: DefaultSessionService(storage: dependencies.get()), for: SessionService.self)
+        
+        return dependencies
     }
 }

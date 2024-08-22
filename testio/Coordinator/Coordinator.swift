@@ -1,7 +1,8 @@
 import UIKit
 
 protocol Coordinator {
-    var navigationController: UINavigationController { get set }
+    var root: UINavigationController { get set }
+    var dependencies: DependencyContainer { get set }
 
     func start()
 }

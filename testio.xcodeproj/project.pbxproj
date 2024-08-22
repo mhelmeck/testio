@@ -21,11 +21,14 @@
 		894309332C776D6700C30DB8 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309322C776D6700C30DB8 /* Credentials.swift */; };
 		894309352C776D7000C30DB8 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309342C776D7000C30DB8 /* UserSession.swift */; };
 		894309372C776D7B00C30DB8 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309362C776D7B00C30DB8 /* Server.swift */; };
-		894309392C776DB400C30DB8 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309382C776DB400C30DB8 /* Networking.swift */; };
+		894309392C776DB400C30DB8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309382C776DB400C30DB8 /* Network.swift */; };
 		8943093B2C776DC700C30DB8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943093A2C776DC700C30DB8 /* NetworkError.swift */; };
-		8943093D2C776DE200C30DB8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943093C2C776DE200C30DB8 /* Network.swift */; };
+		8943093D2C776DE200C30DB8 /* PlaygroundNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943093C2C776DE200C30DB8 /* PlaygroundNetwork.swift */; };
 		8943093F2C776E0A00C30DB8 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943093E2C776E0A00C30DB8 /* Storage.swift */; };
 		894309422C77749400C30DB8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309412C77749400C30DB8 /* LoginViewModel.swift */; };
+		894309462C7778CE00C30DB8 /* DefaultSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309452C7778CE00C30DB8 /* DefaultSessionService.swift */; };
+		894309492C777F2900C30DB8 /* DependencyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309482C777F2900C30DB8 /* DependencyRepository.swift */; };
+		8943094B2C777F7700C30DB8 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943094A2C777F7700C30DB8 /* DependencyContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,11 +67,14 @@
 		894309322C776D6700C30DB8 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		894309342C776D7000C30DB8 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		894309362C776D7B00C30DB8 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
-		894309382C776DB400C30DB8 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		894309382C776DB400C30DB8 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		8943093A2C776DC700C30DB8 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		8943093C2C776DE200C30DB8 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		8943093C2C776DE200C30DB8 /* PlaygroundNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundNetwork.swift; sourceTree = "<group>"; };
 		8943093E2C776E0A00C30DB8 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		894309412C77749400C30DB8 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		894309452C7778CE00C30DB8 /* DefaultSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSessionService.swift; sourceTree = "<group>"; };
+		894309482C777F2900C30DB8 /* DependencyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyRepository.swift; sourceTree = "<group>"; };
+		8943094A2C777F7700C30DB8 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +125,7 @@
 		8901DDB62C772711005E5DA3 /* testio */ = {
 			isa = PBXGroup;
 			children = (
+				894309472C777F2100C30DB8 /* DependencyRepository */,
 				8901DDF02C776C05005E5DA3 /* Network */,
 				8901DDF12C776C09005E5DA3 /* Persistance */,
 				894309402C776E2600C30DB8 /* Service */,
@@ -173,8 +180,8 @@
 		8901DDF02C776C05005E5DA3 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				894309382C776DB400C30DB8 /* Networking.swift */,
-				8943093C2C776DE200C30DB8 /* Network.swift */,
+				894309382C776DB400C30DB8 /* Network.swift */,
+				8943093C2C776DE200C30DB8 /* PlaygroundNetwork.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -201,8 +208,18 @@
 		894309402C776E2600C30DB8 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				894309452C7778CE00C30DB8 /* DefaultSessionService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		894309472C777F2100C30DB8 /* DependencyRepository */ = {
+			isa = PBXGroup;
+			children = (
+				894309482C777F2900C30DB8 /* DependencyRepository.swift */,
+				8943094A2C777F7700C30DB8 /* DependencyContainer.swift */,
+			);
+			path = DependencyRepository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,9 +352,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				894309462C7778CE00C30DB8 /* DefaultSessionService.swift in Sources */,
 				8901DDEE2C774C4F005E5DA3 /* LoginViewController.swift in Sources */,
-				894309392C776DB400C30DB8 /* Networking.swift in Sources */,
-				8943093D2C776DE200C30DB8 /* Network.swift in Sources */,
+				894309392C776DB400C30DB8 /* Network.swift in Sources */,
+				8943093D2C776DE200C30DB8 /* PlaygroundNetwork.swift in Sources */,
 				8901DDEA2C77481F005E5DA3 /* Coordinator.swift in Sources */,
 				8901DDBC2C772711005E5DA3 /* HomeViewController.swift in Sources */,
 				894309332C776D6700C30DB8 /* Credentials.swift in Sources */,
@@ -346,8 +364,10 @@
 				8901DDB82C772711005E5DA3 /* AppDelegate.swift in Sources */,
 				8901DDBA2C772711005E5DA3 /* SceneDelegate.swift in Sources */,
 				894309372C776D7B00C30DB8 /* Server.swift in Sources */,
+				894309492C777F2900C30DB8 /* DependencyRepository.swift in Sources */,
 				8943093B2C776DC700C30DB8 /* NetworkError.swift in Sources */,
 				894309352C776D7000C30DB8 /* UserSession.swift in Sources */,
+				8943094B2C777F7700C30DB8 /* DependencyContainer.swift in Sources */,
 				8943093F2C776E0A00C30DB8 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
