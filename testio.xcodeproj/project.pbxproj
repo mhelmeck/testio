@@ -26,10 +26,11 @@
 		8943093D2C776DE200C30DB8 /* PlaygroundNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943093C2C776DE200C30DB8 /* PlaygroundNetwork.swift */; };
 		8943093F2C776E0A00C30DB8 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943093E2C776E0A00C30DB8 /* Storage.swift */; };
 		894309422C77749400C30DB8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309412C77749400C30DB8 /* LoginViewModel.swift */; };
-		894309462C7778CE00C30DB8 /* DefaultSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309452C7778CE00C30DB8 /* DefaultSessionService.swift */; };
+		894309462C7778CE00C30DB8 /* DefaultAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309452C7778CE00C30DB8 /* DefaultAuthService.swift */; };
 		894309492C777F2900C30DB8 /* DependencyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309482C777F2900C30DB8 /* DependencyRepository.swift */; };
 		8943094B2C777F7700C30DB8 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943094A2C777F7700C30DB8 /* DependencyContainer.swift */; };
 		8943094D2C77844E00C30DB8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943094C2C77844E00C30DB8 /* HomeViewModel.swift */; };
+		8943094F2C77894400C30DB8 /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943094E2C77894400C30DB8 /* UserDefaultStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,10 +74,11 @@
 		8943093C2C776DE200C30DB8 /* PlaygroundNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundNetwork.swift; sourceTree = "<group>"; };
 		8943093E2C776E0A00C30DB8 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		894309412C77749400C30DB8 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		894309452C7778CE00C30DB8 /* DefaultSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSessionService.swift; sourceTree = "<group>"; };
+		894309452C7778CE00C30DB8 /* DefaultAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthService.swift; sourceTree = "<group>"; };
 		894309482C777F2900C30DB8 /* DependencyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyRepository.swift; sourceTree = "<group>"; };
 		8943094A2C777F7700C30DB8 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		8943094C2C77844E00C30DB8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		8943094E2C77894400C30DB8 /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				8943093E2C776E0A00C30DB8 /* Storage.swift */,
+				8943094E2C77894400C30DB8 /* UserDefaultStorage.swift */,
 			);
 			path = Persistance;
 			sourceTree = "<group>";
@@ -211,7 +214,7 @@
 		894309402C776E2600C30DB8 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				894309452C7778CE00C30DB8 /* DefaultSessionService.swift */,
+				894309452C7778CE00C30DB8 /* DefaultAuthService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -355,10 +358,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				894309462C7778CE00C30DB8 /* DefaultSessionService.swift in Sources */,
+				894309462C7778CE00C30DB8 /* DefaultAuthService.swift in Sources */,
 				8943094D2C77844E00C30DB8 /* HomeViewModel.swift in Sources */,
 				8901DDEE2C774C4F005E5DA3 /* LoginViewController.swift in Sources */,
 				894309392C776DB400C30DB8 /* Network.swift in Sources */,
+				8943094F2C77894400C30DB8 /* UserDefaultStorage.swift in Sources */,
 				8943093D2C776DE200C30DB8 /* PlaygroundNetwork.swift in Sources */,
 				8901DDEA2C77481F005E5DA3 /* Coordinator.swift in Sources */,
 				8901DDBC2C772711005E5DA3 /* HomeViewController.swift in Sources */,

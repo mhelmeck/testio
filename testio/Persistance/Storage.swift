@@ -1,9 +1,5 @@
 protocol Storage {
-    func readSession() -> UserSession?
-}
-
-class UserDefaultStorage: Storage {
-    func readSession() -> UserSession? {
-        return nil
-    }
+    func writeToken(_ token: String)
+    func readToken() -> String?
+    func deleteToken()
 }

@@ -4,12 +4,12 @@ class HomeViewModel {
     
     // MARK: - Properties
     
-    private let network: Network
+    private let authService: AuthService
     
     // MARK: - Init
     
-    init(network: Network) {
-        self.network = network
+    init(authService: AuthService) {
+        self.authService = authService
     }
     
     // MARK: - Methods
@@ -19,18 +19,18 @@ class HomeViewModel {
     }
     
     @objc func logout() {
-        
+        authService.logout()
     }
     
     func printServers() {
-        Task {
-            do {
-                let userSession = try await network.getSession(credentials: Credentials())
-                let servers = try await network.getServerList(token: userSession.token)
-                print("my_log servers: \(servers)")
-            } catch {
-                print("my_log error: \(error)")
-            }
-        }
+//        Task {
+//            do {
+//                let userSession = try await network.getSession(credentials: Credentials())
+//                let servers = try await network.getServerList(token: userSession.token)
+//                print("my_log servers: \(servers)")
+//            } catch {
+//                print("my_log error: \(error)")
+//            }
+//        }
     }
 }

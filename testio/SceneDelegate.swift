@@ -53,7 +53,13 @@ extension SceneDelegate {
         let dependencies = DependencyContainer()
         dependencies.register(dependency: PlaygroundNetwork(), for: Network.self)
         dependencies.register(dependency: UserDefaultStorage(), for: Storage.self)
-        dependencies.register(dependency: DefaultSessionService(storage: dependencies.get()), for: SessionService.self)
+        dependencies.register(
+            dependency: DefaultAuthService(
+                network: dependencies.get(),
+                storage: dependencies.get()
+            ),
+            for: AuthService.self
+        )
         
         return dependencies
     }
