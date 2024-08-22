@@ -6,3 +6,11 @@ protocol Coordinator {
 
     func start()
 }
+
+protocol LoginCoordinatorDelegate: AnyObject {
+    func showHome()
+}
+
+protocol HomeCoordinatorDelegate: AnyObject {
+    func showLogin()
+}

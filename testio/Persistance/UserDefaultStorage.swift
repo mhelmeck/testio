@@ -17,7 +17,6 @@ class UserDefaultStorage: Storage {
     }
     
     func deleteToken() {
-        UserDefaults.standard.removeObject(forKey: tokenKey)
-        UserDefaults.standard.synchronize()
+        UserDefaults.standard.set(nil, forKey: tokenKey)
     }
 }

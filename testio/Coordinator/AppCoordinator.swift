@@ -1,6 +1,6 @@
 import UIKit
 
-class AppCoordinator: Coordinator {
+class AppCoordinator: Coordinator, LoginCoordinatorDelegate, HomeCoordinatorDelegate {
     
     // MARK: - Properties
     
@@ -27,15 +27,17 @@ class AppCoordinator: Coordinator {
         }
     }
     
-    private func showHome() {
-        let vm = HomeViewModel(authService: authService)
+    // MARK: - Api
+    
+    func showHome() {
+        let vm = HomeViewModel(coordinator: self, authService: authService)
         let vc = HomeViewController(viewModel: vm)
         
         root.viewControllers = [vc]
     }
     
-    private func showLogin() {
-        let vm = LoginViewModel(authService: authService)
+    func showLogin() {
+        let vm = LoginViewModel(coordinator: self, authService: authService)
         let vc = LoginViewController(viewModel: vm)
         
         root.viewControllers = [vc]

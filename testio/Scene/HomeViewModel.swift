@@ -5,10 +5,12 @@ class HomeViewModel {
     // MARK: - Properties
     
     private let authService: AuthService
+    private weak var coordinator: HomeCoordinatorDelegate?
     
     // MARK: - Init
     
-    init(authService: AuthService) {
+    init(coordinator: HomeCoordinatorDelegate, authService: AuthService) {
+        self.coordinator = coordinator
         self.authService = authService
     }
     
@@ -20,17 +22,6 @@ class HomeViewModel {
     
     @objc func logout() {
         authService.logout()
-    }
-    
-    func printServers() {
-//        Task {
-//            do {
-//                let userSession = try await network.getSession(credentials: Credentials())
-//                let servers = try await network.getServerList(token: userSession.token)
-//                print("my_log servers: \(servers)")
-//            } catch {
-//                print("my_log error: \(error)")
-//            }
-//        }
+        coordinator?.showLogin()
     }
 }
