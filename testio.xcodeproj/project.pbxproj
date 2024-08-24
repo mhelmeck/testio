@@ -9,12 +9,36 @@
 /* Begin PBXBuildFile section */
 		8901DDB82C772711005E5DA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8901DDB72C772711005E5DA3 /* AppDelegate.swift */; };
 		8901DDBA2C772711005E5DA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8901DDB92C772711005E5DA3 /* SceneDelegate.swift */; };
-		8901DDBC2C772711005E5DA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8901DDBB2C772711005E5DA3 /* ViewController.swift */; };
+		8901DDBC2C772711005E5DA3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8901DDBB2C772711005E5DA3 /* HomeViewController.swift */; };
 		8901DDC12C772713005E5DA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8901DDC02C772713005E5DA3 /* Assets.xcassets */; };
 		8901DDC42C772713005E5DA3 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8901DDC32C772713005E5DA3 /* Base */; };
 		8901DDCF2C772714005E5DA3 /* testioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8901DDCE2C772714005E5DA3 /* testioTests.swift */; };
 		8901DDD92C772714005E5DA3 /* testioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8901DDD82C772714005E5DA3 /* testioUITests.swift */; };
 		8901DDDB2C772714005E5DA3 /* testioUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8901DDDA2C772714005E5DA3 /* testioUITestsLaunchTests.swift */; };
+		8901DDEA2C77481F005E5DA3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8901DDE92C77481F005E5DA3 /* Coordinator.swift */; };
+		8901DDEC2C77487F005E5DA3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8901DDEB2C77487F005E5DA3 /* AppCoordinator.swift */; };
+		8901DDEE2C774C4F005E5DA3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8901DDED2C774C4F005E5DA3 /* LoginViewController.swift */; };
+		894309332C776D6700C30DB8 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309322C776D6700C30DB8 /* Credentials.swift */; };
+		894309352C776D7000C30DB8 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309342C776D7000C30DB8 /* UserSession.swift */; };
+		894309372C776D7B00C30DB8 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309362C776D7B00C30DB8 /* Server.swift */; };
+		894309392C776DB400C30DB8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309382C776DB400C30DB8 /* Network.swift */; };
+		8943093D2C776DE200C30DB8 /* UrlSessionNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943093C2C776DE200C30DB8 /* UrlSessionNetwork.swift */; };
+		8943093F2C776E0A00C30DB8 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943093E2C776E0A00C30DB8 /* Storage.swift */; };
+		894309422C77749400C30DB8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309412C77749400C30DB8 /* LoginViewModel.swift */; };
+		894309462C7778CE00C30DB8 /* DefaultAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309452C7778CE00C30DB8 /* DefaultAuthService.swift */; };
+		894309492C777F2900C30DB8 /* DependencyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309482C777F2900C30DB8 /* DependencyRepository.swift */; };
+		8943094B2C777F7700C30DB8 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943094A2C777F7700C30DB8 /* DependencyContainer.swift */; };
+		8943094D2C77844E00C30DB8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943094C2C77844E00C30DB8 /* HomeViewModel.swift */; };
+		8943094F2C77894400C30DB8 /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8943094E2C77894400C30DB8 /* KeychainStorage.swift */; };
+		894309512C779C0300C30DB8 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894309502C779C0300C30DB8 /* AuthService.swift */; };
+		898DB5132C79F93C002BF445 /* ServersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898DB5122C79F93C002BF445 /* ServersService.swift */; };
+		898DB5152C79F95C002BF445 /* DefaultServersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898DB5142C79F95C002BF445 /* DefaultServersService.swift */; };
+		898DB5172C79F980002BF445 /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898DB5162C79F980002BF445 /* AuthError.swift */; };
+		898DB5192C79F998002BF445 /* ServersError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898DB5182C79F998002BF445 /* ServersError.swift */; };
+		898DB51D2C79FB08002BF445 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898DB51C2C79FB08002BF445 /* NetworkError.swift */; };
+		898DB51F2C7A0411002BF445 /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898DB51E2C7A0411002BF445 /* SecureStorage.swift */; };
+		898DB5212C7A0418002BF445 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898DB5202C7A0418002BF445 /* LocalStorage.swift */; };
+		898DB5232C7A04AE002BF445 /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898DB5222C7A04AE002BF445 /* UserDefaultsStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +62,7 @@
 		8901DDB42C772711005E5DA3 /* testio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8901DDB72C772711005E5DA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8901DDB92C772711005E5DA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8901DDBB2C772711005E5DA3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8901DDBB2C772711005E5DA3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8901DDC02C772713005E5DA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8901DDC32C772713005E5DA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8901DDC52C772713005E5DA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +71,30 @@
 		8901DDD42C772714005E5DA3 /* testioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8901DDD82C772714005E5DA3 /* testioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testioUITests.swift; sourceTree = "<group>"; };
 		8901DDDA2C772714005E5DA3 /* testioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testioUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8901DDE92C77481F005E5DA3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		8901DDEB2C77487F005E5DA3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		8901DDED2C774C4F005E5DA3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		894309322C776D6700C30DB8 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		894309342C776D7000C30DB8 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		894309362C776D7B00C30DB8 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		894309382C776DB400C30DB8 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		8943093C2C776DE200C30DB8 /* UrlSessionNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlSessionNetwork.swift; sourceTree = "<group>"; };
+		8943093E2C776E0A00C30DB8 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		894309412C77749400C30DB8 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		894309452C7778CE00C30DB8 /* DefaultAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthService.swift; sourceTree = "<group>"; };
+		894309482C777F2900C30DB8 /* DependencyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyRepository.swift; sourceTree = "<group>"; };
+		8943094A2C777F7700C30DB8 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		8943094C2C77844E00C30DB8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		8943094E2C77894400C30DB8 /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
+		894309502C779C0300C30DB8 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		898DB5122C79F93C002BF445 /* ServersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServersService.swift; sourceTree = "<group>"; };
+		898DB5142C79F95C002BF445 /* DefaultServersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultServersService.swift; sourceTree = "<group>"; };
+		898DB5162C79F980002BF445 /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
+		898DB5182C79F998002BF445 /* ServersError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServersError.swift; sourceTree = "<group>"; };
+		898DB51C2C79FB08002BF445 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		898DB51E2C7A0411002BF445 /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
+		898DB5202C7A0418002BF445 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		898DB5222C7A04AE002BF445 /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +145,18 @@
 		8901DDB62C772711005E5DA3 /* testio */ = {
 			isa = PBXGroup;
 			children = (
+				894309472C777F2100C30DB8 /* DependencyRepository */,
+				8901DDF02C776C05005E5DA3 /* Network */,
+				8901DDF12C776C09005E5DA3 /* Persistance */,
+				894309402C776E2600C30DB8 /* Service */,
+				8901DDE82C7747FC005E5DA3 /* Coordinator */,
+				8901DDF22C776C0C005E5DA3 /* Model */,
+				8901DDEF2C774C69005E5DA3 /* Scene */,
+				8901DDC52C772713005E5DA3 /* Info.plist */,
 				8901DDB72C772711005E5DA3 /* AppDelegate.swift */,
 				8901DDB92C772711005E5DA3 /* SceneDelegate.swift */,
-				8901DDBB2C772711005E5DA3 /* ViewController.swift */,
 				8901DDC02C772713005E5DA3 /* Assets.xcassets */,
 				8901DDC22C772713005E5DA3 /* LaunchScreen.storyboard */,
-				8901DDC52C772713005E5DA3 /* Info.plist */,
 			);
 			path = testio;
 			sourceTree = "<group>";
@@ -122,6 +176,96 @@
 				8901DDDA2C772714005E5DA3 /* testioUITestsLaunchTests.swift */,
 			);
 			path = testioUITests;
+			sourceTree = "<group>";
+		};
+		8901DDE82C7747FC005E5DA3 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8901DDE92C77481F005E5DA3 /* Coordinator.swift */,
+				8901DDEB2C77487F005E5DA3 /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		8901DDEF2C774C69005E5DA3 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				8901DDBB2C772711005E5DA3 /* HomeViewController.swift */,
+				8943094C2C77844E00C30DB8 /* HomeViewModel.swift */,
+				8901DDED2C774C4F005E5DA3 /* LoginViewController.swift */,
+				894309412C77749400C30DB8 /* LoginViewModel.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		8901DDF02C776C05005E5DA3 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				898DB51B2C79FB00002BF445 /* Error */,
+				894309382C776DB400C30DB8 /* Network.swift */,
+				8943093C2C776DE200C30DB8 /* UrlSessionNetwork.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		8901DDF12C776C09005E5DA3 /* Persistance */ = {
+			isa = PBXGroup;
+			children = (
+				8943093E2C776E0A00C30DB8 /* Storage.swift */,
+				898DB51E2C7A0411002BF445 /* SecureStorage.swift */,
+				898DB5202C7A0418002BF445 /* LocalStorage.swift */,
+				8943094E2C77894400C30DB8 /* KeychainStorage.swift */,
+				898DB5222C7A04AE002BF445 /* UserDefaultsStorage.swift */,
+			);
+			path = Persistance;
+			sourceTree = "<group>";
+		};
+		8901DDF22C776C0C005E5DA3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				894309322C776D6700C30DB8 /* Credentials.swift */,
+				894309342C776D7000C30DB8 /* UserSession.swift */,
+				894309362C776D7B00C30DB8 /* Server.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		894309402C776E2600C30DB8 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				898DB51A2C79F9AD002BF445 /* Error */,
+				894309502C779C0300C30DB8 /* AuthService.swift */,
+				894309452C7778CE00C30DB8 /* DefaultAuthService.swift */,
+				898DB5122C79F93C002BF445 /* ServersService.swift */,
+				898DB5142C79F95C002BF445 /* DefaultServersService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		894309472C777F2100C30DB8 /* DependencyRepository */ = {
+			isa = PBXGroup;
+			children = (
+				894309482C777F2900C30DB8 /* DependencyRepository.swift */,
+				8943094A2C777F7700C30DB8 /* DependencyContainer.swift */,
+			);
+			path = DependencyRepository;
+			sourceTree = "<group>";
+		};
+		898DB51A2C79F9AD002BF445 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				898DB5162C79F980002BF445 /* AuthError.swift */,
+				898DB5182C79F998002BF445 /* ServersError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		898DB51B2C79FB00002BF445 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				898DB51C2C79FB08002BF445 /* NetworkError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,9 +398,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8901DDBC2C772711005E5DA3 /* ViewController.swift in Sources */,
+				894309462C7778CE00C30DB8 /* DefaultAuthService.swift in Sources */,
+				8943094D2C77844E00C30DB8 /* HomeViewModel.swift in Sources */,
+				8901DDEE2C774C4F005E5DA3 /* LoginViewController.swift in Sources */,
+				894309392C776DB400C30DB8 /* Network.swift in Sources */,
+				8943094F2C77894400C30DB8 /* KeychainStorage.swift in Sources */,
+				8943093D2C776DE200C30DB8 /* UrlSessionNetwork.swift in Sources */,
+				898DB5192C79F998002BF445 /* ServersError.swift in Sources */,
+				8901DDEA2C77481F005E5DA3 /* Coordinator.swift in Sources */,
+				894309512C779C0300C30DB8 /* AuthService.swift in Sources */,
+				898DB51D2C79FB08002BF445 /* NetworkError.swift in Sources */,
+				8901DDBC2C772711005E5DA3 /* HomeViewController.swift in Sources */,
+				894309332C776D6700C30DB8 /* Credentials.swift in Sources */,
+				894309422C77749400C30DB8 /* LoginViewModel.swift in Sources */,
+				8901DDEC2C77487F005E5DA3 /* AppCoordinator.swift in Sources */,
 				8901DDB82C772711005E5DA3 /* AppDelegate.swift in Sources */,
 				8901DDBA2C772711005E5DA3 /* SceneDelegate.swift in Sources */,
+				898DB5232C7A04AE002BF445 /* UserDefaultsStorage.swift in Sources */,
+				898DB5132C79F93C002BF445 /* ServersService.swift in Sources */,
+				894309372C776D7B00C30DB8 /* Server.swift in Sources */,
+				898DB5172C79F980002BF445 /* AuthError.swift in Sources */,
+				894309492C777F2900C30DB8 /* DependencyRepository.swift in Sources */,
+				894309352C776D7000C30DB8 /* UserSession.swift in Sources */,
+				8943094B2C777F7700C30DB8 /* DependencyContainer.swift in Sources */,
+				898DB5152C79F95C002BF445 /* DefaultServersService.swift in Sources */,
+				898DB5212C7A0418002BF445 /* LocalStorage.swift in Sources */,
+				898DB51F2C7A0411002BF445 /* SecureStorage.swift in Sources */,
+				8943093F2C776E0A00C30DB8 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +606,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,6 +635,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
