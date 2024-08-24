@@ -26,7 +26,7 @@ class DefaultAuthService: AuthService {
     
     func login(with credentials: Credentials) async throws {
         let request = try buildLoginRequest(credentials: credentials)
-        let userSession: UserSession = try await network.getData(with: request)
+        let userSession: UserSession = try await network.get(with: request)
         storage.write(userSession, forKey: userSessionKey)
     }
     

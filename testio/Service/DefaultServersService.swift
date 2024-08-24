@@ -8,6 +8,8 @@ class DefaultServersService: ServersService {
     private let storage: LocalStorage
     private let authService: AuthService
     
+    private let serversKey = "servers_key"
+    
     // MARK: - Init
     
     init(network: Network, storage: LocalStorage, authService: AuthService) {
@@ -25,10 +27,21 @@ class DefaultServersService: ServersService {
     // MARK: - Api
     
     func getServers() async throws -> [Server] {
+        if let servers: [Server] = storage.read(forKey: serversKey) {
+            return servers
+        }
+        
+        let servers: [Server] = try await getRemoteServers()
+        storage.write(servers, forKey: serversKey)
+        
+        return servers
+    }
+    
+    private func getRemoteServers() async throws -> [Server] {
         let userSession = try authService.userSession()
         let request = try buildServersRequest(userSession: userSession)
         
-        return try await network.getData(with: request)
+        return try await network.get(with: request)
     }
 }
 

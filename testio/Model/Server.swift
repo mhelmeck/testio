@@ -1,6 +1,6 @@
 import Foundation
 
-struct Server: Decodable {
+struct Server: Codable {
     let distance: Int
     let name: String
 }
