@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
         
         setupView()
         installConstraints()
-        addTargets()
+        setDelegatesAndTargets()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,7 +115,7 @@ class LoginViewController: UIViewController {
         ])
     }
     
-    private func addTargets() {
+    private func setDelegatesAndTargets() {
         usernameTextField.delegate = self
         passwordTextField.delegate = self
 //        loginButton.addTarget(viewModel, action: #selector(viewModel.login), for: .touchUpInside)
@@ -124,12 +124,12 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.leftView!.tintColor = textColor
+        textField.leftView!.tintColor = .textFieldTextColor
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let text = textField.text, text.isEmpty {
-            textField.leftView!.tintColor = placeholderColor
+            textField.leftView!.tintColor = .textFieldPlaceholderColor
         }
     }
 }
