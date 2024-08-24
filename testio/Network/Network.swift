@@ -1,4 +1,5 @@
+import Foundation
+
 protocol Network {
-    func getSession(credentials: Credentials) async throws -> UserSession
-    func getServerList(token: String) async throws -> [Server]
+    func getData<T: Decodable>(with request: URLRequest) async throws -> T
 }

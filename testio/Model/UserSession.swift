@@ -1,5 +1,5 @@
 import Foundation
 
-struct UserSession: Decodable {
+struct UserSession: Codable {
     let token: String
 }

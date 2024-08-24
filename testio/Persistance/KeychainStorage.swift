@@ -1,10 +1,14 @@
 import Foundation
 import Security
 
-class KeychainStorage: Storage {
-    private let service = "com.testio.service"
-    private let tokenKey = "session_token"
+class KeychainStorage: SecureStorage {
+    
+    // MARK: - Properties
+    
+    private let service = "com.testio.keychain_storage"
 
+    // MARK: - Init
+    
     init() {
         print("my_log init KeychainStorage")
     }
@@ -12,14 +16,18 @@ class KeychainStorage: Storage {
         print("my_log deinit KeychainStorage")
     }
     
-    func writeToken(_ token: String) {
-        guard let tokenData = token.data(using: .utf8) else { return }
+    // MARK: - Api
+    
+    func write<T: Encodable>(_ item: T, forKey key: String) {
+        guard let data = try? JSONEncoder().encode(item) else {
+            return
+        }
 
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
-            kSecAttrAccount as String: tokenKey,
-            kSecValueData as String: tokenData
+            kSecAttrAccount as String: key,
+            kSecValueData as String: data
         ]
 
         let status = SecItemAdd(query as CFDictionary, nil)
@@ -28,10 +36,10 @@ class KeychainStorage: Storage {
             let updateQuery: [String: Any] = [
                 kSecClass as String: kSecClassGenericPassword,
                 kSecAttrService as String: service,
-                kSecAttrAccount as String: tokenKey
+                kSecAttrAccount as String: key
             ]
             let attributesToUpdate: [String: Any] = [
-                kSecValueData as String: tokenData
+                kSecValueData as String: data
             ]
             SecItemUpdate(updateQuery as CFDictionary, attributesToUpdate as CFDictionary)
         } else if status != errSecSuccess {
@@ -40,31 +48,31 @@ class KeychainStorage: Storage {
             print("Token saved successfully.")
         }
     }
-
-    func readToken() -> String? {
+    
+    func read<T: Decodable>(forKey key: String) -> T? {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
-            kSecAttrAccount as String: tokenKey,
+            kSecAttrAccount as String: key,
             kSecReturnData as String: kCFBooleanTrue!,
             kSecMatchLimit as String: kSecMatchLimitOne
         ]
 
         var item: CFTypeRef?
         let status = SecItemCopyMatching(query as CFDictionary, &item)
-        if status == errSecSuccess, let data = item as? Data, let token = String(data: data, encoding: .utf8) {
-            return token
+        if status == errSecSuccess, let data = item as? Data, let item = try? JSONDecoder().decode(T.self, from: data) {
+            return item
         } else {
             print("Error reading token from keychain: \(status)")
             return nil
         }
     }
-
-    func deleteToken() {
+    
+    func delete(forKey key: String) {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
-            kSecAttrAccount as String: tokenKey
+            kSecAttrAccount as String: key
         ]
 
         let status = SecItemDelete(query as CFDictionary)
@@ -75,4 +83,3 @@ class KeychainStorage: Storage {
         }
     }
 }
-

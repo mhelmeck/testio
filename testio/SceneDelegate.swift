@@ -51,14 +51,23 @@ extension SceneDelegate {
     
     private func createAndSetupDependencies() -> DependencyContainer {
         let dependencies = DependencyContainer()
-        dependencies.register(dependency: PlaygroundNetwork(), for: Network.self)
-        dependencies.register(dependency: KeychainStorage(), for: Storage.self)
+        dependencies.register(dependency: UrlSessionNetwork(), for: Network.self)
+        dependencies.register(dependency: KeychainStorage(), for: SecureStorage.self)
+        dependencies.register(dependency: UserDefaultsStorage(), for: LocalStorage.self)
         dependencies.register(
             dependency: DefaultAuthService(
                 network: dependencies.get(),
                 storage: dependencies.get()
             ),
             for: AuthService.self
+        )
+        dependencies.register(
+            dependency: DefaultServersService(
+                network: dependencies.get(),
+                storage: dependencies.get(),
+                authService: dependencies.get()
+            ),
+            for: ServersService.self
         )
         
         return dependencies

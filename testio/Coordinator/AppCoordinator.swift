@@ -7,14 +7,11 @@ class AppCoordinator: Coordinator, LoginCoordinatorDelegate, HomeCoordinatorDele
     let root: UINavigationController
     let dependencies: DependencyContainer
     
-    private let authService: AuthService
-    
     // MARK: - Init
     
     init(root: UINavigationController, dependencies: DependencyContainer ) {
         self.root = root
         self.dependencies = dependencies
-        self.authService = dependencies.get()
         
         print("my_log init AppCoordinator")
     }
@@ -26,6 +23,7 @@ class AppCoordinator: Coordinator, LoginCoordinatorDelegate, HomeCoordinatorDele
     // MARK: - Methods
     
     func start() {
+        let authService: AuthService = dependencies.get()
         if authService.isLoggedIn() {
             showHome()
         } else {
@@ -36,14 +34,21 @@ class AppCoordinator: Coordinator, LoginCoordinatorDelegate, HomeCoordinatorDele
     // MARK: - Api
     
     func showHome() {
-        let vm = HomeViewModel(coordinator: self, authService: authService)
+        let vm = HomeViewModel(
+            coordinator: self,
+            authService: dependencies.get(),
+            serversService: dependencies.get()
+        )
         let vc = HomeViewController(viewModel: vm)
         
         root.viewControllers = [vc]
     }
     
     func showLogin() {
-        let vm = LoginViewModel(coordinator: self, authService: authService)
+        let vm = LoginViewModel(
+            coordinator: self,
+            authService: dependencies.get()
+        )
         let vc = LoginViewController(viewModel: vm)
         
         root.viewControllers = [vc]

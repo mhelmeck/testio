@@ -1,13 +1,17 @@
+import Foundation
+
 class DefaultAuthService: AuthService {
     
     // MARK: - Properties
    
     private let network: Network
-    private let storage: Storage
+    private let storage: SecureStorage
+    
+    private let userSessionKey = "user_session_key"
    
     // MARK: - Init
     
-    init(network: Network, storage: Storage) {
+    init(network: Network, storage: SecureStorage) {
         self.network = network
         self.storage = storage
         
@@ -21,19 +25,43 @@ class DefaultAuthService: AuthService {
     // MARK: - Api
     
     func login(with credentials: Credentials) async throws {
-        let userSession = try await network.getSession(credentials: credentials)
-        storage.writeToken(userSession.token)
+        let request = try buildLoginRequest(credentials: credentials)
+        let userSession: UserSession = try await network.getData(with: request)
+        storage.write(userSession, forKey: userSessionKey)
     }
     
     func logout() {
-        storage.deleteToken()
+        storage.delete(forKey: userSessionKey)
     }
 
     func isLoggedIn() -> Bool {
-        guard let token = storage.readToken() else {
+        guard let userSession = try? userSession() else {
             return false
         }
         
-        return !token.isEmpty
+        return !userSession.token.isEmpty
+    }
+    
+    func userSession() throws -> UserSession {
+        guard let userSession: UserSession = storage.read(forKey: userSessionKey) else {
+            throw AuthError.noValidToken
+        }
+        
+        return userSession
+    }
+}
+
+private extension DefaultAuthService {
+    func buildLoginRequest(credentials: Credentials) throws -> URLRequest {
+        guard let url = URL(string: "https://playground.tesonet.lt/v1/tokens") else {
+            throw AuthError.wrongUrl
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = try JSONEncoder().encode(credentials)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        return request
     }
 }
