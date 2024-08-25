@@ -77,4 +77,21 @@ extension UIViewController {
         
         return label
     }
+    
+    static func buildListCollectionView() -> UICollectionView {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: listLayout())
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .white
+        
+        return collectionView
+    }
+    
+    private static func listLayout() -> UICollectionViewCompositionalLayout {
+        var listConfiguration = UICollectionLayoutListConfiguration(appearance: .grouped)
+        listConfiguration.headerMode = .supplementary
+        listConfiguration.showsSeparators = true
+        listConfiguration.backgroundColor = .clear
+        
+        return UICollectionViewCompositionalLayout.list(using: listConfiguration)
+    }
 }

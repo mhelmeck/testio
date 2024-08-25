@@ -5,10 +5,11 @@ class HomeViewController: UIViewController {
     // MARK: - Properties
     
     var presenter: HomePresenter!
-    var dataSource: DataSource!
-    
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: listLayout())
     var headerView: HomeHeaderView?
+
+    private var dataSource: DataSource!
+
+    private let collectionView = buildListCollectionView()
     
     private let backgroundImageView = buildImageView(
         name: "background.pdf",
@@ -38,6 +39,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupCollectionView()
         setupView()
         installConstraints()
     }
@@ -48,47 +50,38 @@ class HomeViewController: UIViewController {
         navigationController?.isNavigationBarHidden = false
     }
     
-    private func setupView() {
-        title = "Testio."
-        view.backgroundColor = .white
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(filter))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
-        
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        [
-            backgroundImageView,
-            collectionView,
-            activityIndicator
-        ].forEach(view.addSubview)
-        
+    private func setupCollectionView() {
         let cellRegistration = UICollectionView.CellRegistration(handler: cellRegistrationHandler)
-        dataSource = DataSource(collectionView: collectionView) { (collectionView: UICollectionView, indexPath: IndexPath, itemIdentifier: Server.ID) in
+        dataSource = DataSource(collectionView: collectionView) { 
+            (collectionView: UICollectionView, indexPath: IndexPath, itemIdentifier: Server.ID) in
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
         }
         
-        let headerRegistration = UICollectionView.SupplementaryRegistration(elementKind: HomeHeaderView.elementKind, handler: supplementaryRegistrationHandler)
+        let headerRegistration = UICollectionView.SupplementaryRegistration(
+            elementKind: HomeHeaderView.elementKind,
+            handler: supplementaryRegistrationHandler
+        )
         dataSource.supplementaryViewProvider = { supplementaryView, elementKind, indexPath in
             return self.collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
         }
         
         collectionView.dataSource = dataSource
         collectionView.delegate = self
-        collectionView.backgroundColor = .white
+    }
+    
+    private func setupView() {
+        title = "Testio."
         overrideUserInterfaceStyle = .light
-    }
-    
-    private static func listLayout() -> UICollectionViewCompositionalLayout {
-        var listConfiguration = UICollectionLayoutListConfiguration(appearance: .grouped)
-        listConfiguration.headerMode = .supplementary
-        listConfiguration.showsSeparators = true
-        listConfiguration.backgroundColor = .clear
+        view.backgroundColor = .white
         
-        return UICollectionViewCompositionalLayout.list(using: listConfiguration)
-    }
-    
-    private func supplementaryRegistrationHandler(progressView: HomeHeaderView, elementKind: String, indexPath: IndexPath) {
-        headerView = progressView
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(filter))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
+        
+        [
+            backgroundImageView,
+            collectionView,
+            activityIndicator
+        ].forEach(view.addSubview)
     }
     
     private func installConstraints() {
@@ -144,6 +137,8 @@ extension HomeViewController: HomeView {
         present(alert, animated: true)
     }
 }
+
+// MARK: - UICollectionViewDelegate
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {

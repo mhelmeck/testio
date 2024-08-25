@@ -7,15 +7,14 @@ extension HomeViewController {
     func cellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, id: Server.ID) {
         let server = presenter.server(withId: id)
         
-//        var contentConfiguration = cell.defaultContentConfiguration()
-//        contentConfiguration.text = server.name
-//        contentConfiguration.secondaryText = String(server.distance)
-//        contentConfiguration.secondaryTextProperties.font = .preferredFont(forTextStyle: .caption1)
-//        cell.contentConfiguration = contentConfiguration
         var contentConfiguration = cell.homeCellConfiguration()
         contentConfiguration.server = server.name
         contentConfiguration.distance = server.distance
         
         cell.contentConfiguration = contentConfiguration
+    }
+    
+    func supplementaryRegistrationHandler(progressView: HomeHeaderView, elementKind: String, indexPath: IndexPath) {
+        headerView = progressView
     }
 }

@@ -50,6 +50,7 @@ class HomePresenter {
     
     private func getServers() {
         view?.showLoading()
+        
         Task { @MainActor in
             do {
                 servers = try await serversService.getServers()

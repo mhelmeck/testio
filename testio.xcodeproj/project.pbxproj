@@ -311,10 +311,10 @@
 			children = (
 				898DB52F2C7B7C6A002BF445 /* HomeView.swift */,
 				8901DDBB2C772711005E5DA3 /* HomeViewController.swift */,
+				8943094C2C77844E00C30DB8 /* HomePresenter.swift */,
 				898DB5312C7B837B002BF445 /* HomeViewController+DataSource.swift */,
 				898DB5392C7BA86E002BF445 /* HomeHeaderView.swift */,
 				898DB53B2C7BA945002BF445 /* HomeCellContentView.swift */,
-				8943094C2C77844E00C30DB8 /* HomePresenter.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";

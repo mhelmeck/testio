@@ -2,7 +2,7 @@ import UIKit
 
 class HomeCellContentView: UIView, UIContentView {
     struct Configuration: UIContentConfiguration {
-        var server: String = ""
+        var server: String = String()
         var distance: Int = 0
         
         func makeContentView() -> UIView & UIContentView {
