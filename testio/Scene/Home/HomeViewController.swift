@@ -5,6 +5,10 @@ class HomeViewController: UIViewController {
     // MARK: - Properties
     
     var presenter: HomePresenter!
+    var dataSource: DataSource!
+    
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: listLayout())
+    var headerView: HomeHeaderView?
     
     private let backgroundImageView = buildImageView(
         name: "background.pdf",
@@ -48,13 +52,42 @@ class HomeViewController: UIViewController {
         title = "Testio."
         view.backgroundColor = .white
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .done, target: self, action: #selector(filter))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logout))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(filter))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
         
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         [
             backgroundImageView,
+            collectionView,
             activityIndicator
         ].forEach(view.addSubview)
+        
+        let cellRegistration = UICollectionView.CellRegistration(handler: cellRegistrationHandler)
+        dataSource = DataSource(collectionView: collectionView) { (collectionView: UICollectionView, indexPath: IndexPath, itemIdentifier: Server.ID) in
+            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+        }
+        
+        let headerRegistration = UICollectionView.SupplementaryRegistration(elementKind: HomeHeaderView.elementKind, handler: supplementaryRegistrationHandler)
+        dataSource.supplementaryViewProvider = { supplementaryView, elementKind, indexPath in
+            return self.collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
+        }
+        
+        collectionView.dataSource = dataSource
+        collectionView.backgroundColor = .white
+        overrideUserInterfaceStyle = .light
+    }
+    
+    private static func listLayout() -> UICollectionViewCompositionalLayout {
+        var listConfiguration = UICollectionLayoutListConfiguration(appearance: .grouped)
+        listConfiguration.headerMode = .supplementary
+        listConfiguration.showsSeparators = true
+        listConfiguration.backgroundColor = .clear
+        
+        return UICollectionViewCompositionalLayout.list(using: listConfiguration)
+    }
+    
+    private func supplementaryRegistrationHandler(progressView: HomeHeaderView, elementKind: String, indexPath: IndexPath) {
+        headerView = progressView
     }
     
     private func installConstraints() {
@@ -62,6 +95,11 @@ class HomeViewController: UIViewController {
             backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
@@ -80,6 +118,14 @@ class HomeViewController: UIViewController {
 // MARK: - HomeView
 
 extension HomeViewController: HomeView {
+    func updateSnapshot() {
+        var snapshot = Snapshot()
+        snapshot.appendSections([0])
+        snapshot.appendItems(presenter.servers.map { $0.id })
+        
+        dataSource.apply(snapshot)
+    }
+    
     func showLoading() {
         view.isUserInteractionEnabled = false
         activityIndicator.startAnimating()

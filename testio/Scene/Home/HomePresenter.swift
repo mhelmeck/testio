@@ -4,6 +4,8 @@ class HomePresenter {
     
     // MARK: - Properties
     
+    var servers: [Server] = []
+    
     private let authService: AuthService
     private let serversService: ServersService
     private weak var coordinator: HomeCoordinatorDelegate?
@@ -41,12 +43,18 @@ class HomePresenter {
         coordinator?.showLogin()
     }
     
+    func server(withId id: Server.ID) -> Server {
+        let index = servers.indexOfServer(withId: id)
+        return servers[index]
+    }
+    
     private func getServers() {
         view?.showLoading()
         Task { @MainActor in
             do {
-                let servers = try await serversService.getServers()
+                servers = try await serversService.getServers()
                 
+                view?.updateSnapshot()
                 view?.hideLoading()
             } catch {
                 view?.hideLoading()

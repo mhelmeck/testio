@@ -28,12 +28,12 @@ extension UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .textFieldBackgroundColor
         textField.textColor = .textFieldTextColor
-        textField.font = .loginTextFont
+        textField.font = .defaultTextFont
         textField.attributedPlaceholder = NSAttributedString(
             string: placeholder,
             attributes: [
                 NSAttributedString.Key.foregroundColor: UIColor.textFieldPlaceholderColor,
-                NSAttributedString.Key.font: UIFont.loginTextFont
+                NSAttributedString.Key.font: UIFont.defaultTextFont
             ]
         )
         textField.isSecureTextEntry = isSecureTextEntry
@@ -50,7 +50,7 @@ extension UIViewController {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Log in", for: .normal)
-        button.titleLabel?.font = .loginTextFont
+        button.titleLabel?.font = .defaultTextFont
         button.tintColor = .white
         button.backgroundColor = .loginButtonColor
         button.layer.cornerRadius = 10.0
@@ -66,5 +66,16 @@ extension UIViewController {
         indicator.hidesWhenStopped = true
         
         return indicator
+    }
+    
+    static func buildLabel(text: String, textAlignment: NSTextAlignment = .left) -> UILabel {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = text
+        label.textColor = .headerLabelColor
+        label.font = .headerTextFont
+        label.textAlignment = textAlignment
+        
+        return label
     }
 }
