@@ -16,12 +16,6 @@ class DefaultServersService: ServersService {
         self.network = network
         self.storage = storage
         self.authService = authService
-        
-        print("my_log init DefaultServersService")
-    }
-    
-    deinit {
-        print("my_log deinit DefaultServersService")
     }
     
     // MARK: - Api

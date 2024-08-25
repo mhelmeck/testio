@@ -12,12 +12,6 @@ class AppCoordinator: Coordinator, LoginCoordinatorDelegate, HomeCoordinatorDele
     init(root: UINavigationController, dependencies: DependencyContainer ) {
         self.root = root
         self.dependencies = dependencies
-        
-        print("my_log init AppCoordinator")
-    }
-    
-    deinit {
-        print("my_log deinit AppCoordinator")
     }
     
     // MARK: - Methods
@@ -34,22 +28,26 @@ class AppCoordinator: Coordinator, LoginCoordinatorDelegate, HomeCoordinatorDele
     // MARK: - Api
     
     func showHome() {
-        let vm = HomeViewModel(
+        let vc = HomeViewController()
+        let presenter = HomePresenter(
+            view: vc,
             coordinator: self,
             authService: dependencies.get(),
             serversService: dependencies.get()
         )
-        let vc = HomeViewController(viewModel: vm)
+        vc.presenter = presenter
         
         root.viewControllers = [vc]
     }
     
     func showLogin() {
-        let vm = LoginViewModel(
+        let vc = LoginViewController()
+        let presenter = LoginPresenter(
+            view: vc,
             coordinator: self,
             authService: dependencies.get()
         )
-        let vc = LoginViewController(viewModel: vm)
+        vc.presenter = presenter
         
         root.viewControllers = [vc]
     }
