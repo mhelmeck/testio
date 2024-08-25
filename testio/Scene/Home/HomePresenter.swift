@@ -36,12 +36,7 @@ class HomePresenter {
         self.authService = authService
         self.serversService = serversService
         
-        print("my_log init HomeViewModel")
         getServers()
-    }
-    
-    deinit {
-        print("my_log deinit HomeViewModel")
     }
     
     // MARK: - Methods

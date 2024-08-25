@@ -38,12 +38,6 @@ class LoginViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        
-        print("my_log init LoginViewController")
-    }
-    
-    deinit {
-        print("my_log deinit LoginViewController")
     }
     
     required init?(coder: NSCoder) {
