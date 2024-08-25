@@ -68,13 +68,12 @@ extension UIViewController {
         return indicator
     }
     
-    static func buildLabel(text: String, textAlignment: NSTextAlignment = .left) -> UILabel {
+    static func buildLabel(text: String? = nil, font: UIFont, textColor: UIColor) -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = text
-        label.textColor = .headerLabelColor
-        label.font = .headerTextFont
-        label.textAlignment = textAlignment
+        label.textColor = textColor
+        label.font = font
         
         return label
     }

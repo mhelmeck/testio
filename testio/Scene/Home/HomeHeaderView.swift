@@ -6,8 +6,17 @@ class HomeHeaderView: UICollectionReusableView {
     
     static var elementKind: String { UICollectionView.elementKindSectionHeader }
     
-    private let serverLabel = UIViewController.buildLabel(text: "SERVER")
-    private let distanceLabel = UIViewController.buildLabel(text: "DISTANCE", textAlignment: .right)
+    private let serverLabel = UIViewController.buildLabel(
+        text: "SERVER",
+        font: .headerTextFont,
+        textColor: .headerLabelColor
+    )
+    
+    private let distanceLabel = UIViewController.buildLabel(
+        text: "DISTANCE",
+        font: .headerTextFont,
+        textColor: .headerLabelColor
+    )
     
     // MARK: - Init
     
@@ -22,7 +31,7 @@ class HomeHeaderView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Methos
+    // MARK: - Methods
     
     private func setupView() {
         backgroundColor = .textFieldBackgroundColor
@@ -38,7 +47,7 @@ class HomeHeaderView: UICollectionReusableView {
             serverLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.0),
             serverLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0),
             
-            distanceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16.0),
+            distanceLabel.leadingAnchor.constraint(equalTo: trailingAnchor, constant: -100.0),
             distanceLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0)
         ])
     }

@@ -73,6 +73,7 @@ class HomeViewController: UIViewController {
         }
         
         collectionView.dataSource = dataSource
+        collectionView.delegate = self
         collectionView.backgroundColor = .white
         overrideUserInterfaceStyle = .light
     }
@@ -141,5 +142,11 @@ extension HomeViewController: HomeView {
         alert.addAction(UIAlertAction(title: "OK", style: .default))
   
         present(alert, animated: true)
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        return false
     }
 }
