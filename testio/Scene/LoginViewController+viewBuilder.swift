@@ -47,6 +47,14 @@ extension LoginViewController {
         button.isEnabled = false
         
         return button
+    }
+    
+    static func buildActivityIndicatorView() -> UIActivityIndicatorView {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.color = .gray
+        indicator.hidesWhenStopped = true
         
+        return indicator
     }
 }

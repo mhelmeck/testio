@@ -6,29 +6,31 @@ class LoginViewController: UIViewController {
     
     var presenter: LoginPresenter!
     
-    private let backgroundImageView = LoginViewController.buildImageView(
+    private let backgroundImageView = buildImageView(
         name: "background.pdf",
         contentMode: .scaleAspectFill
     )
     
-    private let logoImageView = LoginViewController.buildImageView(
+    private let logoImageView = buildImageView(
         name: "logo.pdf",
         contentMode: .scaleAspectFit
     )
     
-    private let usernameTextField = LoginViewController.buildTextField(
+    private let usernameTextField = buildTextField(
         placeholder: "Username",
         iconName: "person.circle",
         isSecureTextEntry: false
     )
     
-    private let passwordTextField = LoginViewController.buildTextField(
+    private let passwordTextField = buildTextField(
         placeholder: "Password",
         iconName: "lock.circle",
         isSecureTextEntry: true
     )
     
-    private let loginButton = LoginViewController.buildButton()
+    private let loginButton = buildButton()
+    
+    private let activityIndicator = buildActivityIndicatorView()
     
     // MARK: - Init
     
@@ -68,37 +70,41 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
         
         [
+            backgroundImageView,
             logoImageView,
             usernameTextField,
             passwordTextField,
             loginButton,
-            backgroundImageView,
+            activityIndicator
         ].forEach(view.addSubview)
     }
     
     private func installConstraints() {
         NSLayoutConstraint.activate([
-            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
-            
-            usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            usernameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            usernameTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 40),
-            usernameTextField.heightAnchor.constraint(equalToConstant: 40),
-            
-            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            passwordTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 16),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 40),
-            
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 40),
-            loginButton.heightAnchor.constraint(equalToConstant: 40),
-            
             backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80.0),
+            
+            usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
+            usernameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
+            usernameTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 40.0),
+            usernameTextField.heightAnchor.constraint(equalToConstant: 40.0),
+            
+            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
+            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
+            passwordTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 16.0),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 40.0),
+            
+            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40.0),
+            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40.0),
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 40.0),
+            loginButton.heightAnchor.constraint(equalToConstant: 40.0),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
     
@@ -113,9 +119,9 @@ class LoginViewController: UIViewController {
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
         if textField == usernameTextField {
-            presenter.username = textField.text ?? ""
+            presenter.username = textField.text ?? String()
         } else if textField == passwordTextField {
-            presenter.password = textField.text ?? ""
+            presenter.password = textField.text ?? String()
         }
     }
     
@@ -129,10 +135,12 @@ class LoginViewController: UIViewController {
 extension LoginViewController: LoginView {
     func showLoading() {
         view.isUserInteractionEnabled = false
+        activityIndicator.startAnimating()
     }
     
     func hideLoading() {
         view.isUserInteractionEnabled = true
+        activityIndicator.stopAnimating()
     }
     
     func enableLoginButton() {
@@ -143,8 +151,11 @@ extension LoginViewController: LoginView {
         loginButton.isEnabled = false
     }
     
-    func showLoginFailure(error: String) {
-        
+    func showLoginFailure(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+  
+        present(alert, animated: true)
     }
 }
 

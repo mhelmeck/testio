@@ -5,7 +5,7 @@ protocol LoginView: AnyObject {
     func hideLoading()
     func enableLoginButton()
     func disableLoginButton()
-    func showLoginFailure(error: String)
+    func showLoginFailure(title: String, message: String)
 }
 
 class LoginPresenter {
@@ -45,8 +45,8 @@ class LoginPresenter {
     // MARK: - Methods
     
     func login() {
-        let credentials = Credentials(username: username, password: password)
-        guard credentials.isValid() else {
+        guard let credentials = getValidatedCredentials() else {
+            view?.showLoginFailure(title: "Verification Failed", message: "Your username or password is incorrect.")
             return
         }
         
@@ -54,13 +54,23 @@ class LoginPresenter {
         Task { @MainActor in
             do {
                 try await authService.login(with: credentials)
-                coordinator?.showHome()
                 
+                coordinator?.showHome()
                 view?.hideLoading()
             } catch {
-                print("my_log error: \(error)")
+                view?.hideLoading()
+                view?.showLoginFailure(title: "Login Failed", message: error.localizedDescription)
             }
         }
+    }
+    
+    private func getValidatedCredentials() -> Credentials? {
+        let credentials = Credentials(username: username, password: password)
+        guard credentials.isValid() else {
+            return nil
+        }
+        
+        return credentials
     }
     
     private func updateLoginButton() {
