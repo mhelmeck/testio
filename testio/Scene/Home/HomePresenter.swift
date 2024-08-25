@@ -1,10 +1,22 @@
 import Foundation
 
 class HomePresenter {
+    enum FilterType {
+        case distance
+        case alphabetical
+        case none
+    }
     
     // MARK: - Properties
     
-    var servers: [Server] = []
+    private var servers: [Server] = []
+    var filteredServers: [Server] = []
+    
+    var filterType: FilterType = .none {
+        didSet {
+            filter()
+        }
+    }
     
     private let authService: AuthService
     private let serversService: ServersService
@@ -33,11 +45,7 @@ class HomePresenter {
     }
     
     // MARK: - Methods
-    
-    func filter() {
         
-    }
-    
     func logout() {
         authService.logout()
         coordinator?.showLogin()
@@ -54,6 +62,7 @@ class HomePresenter {
         Task { @MainActor in
             do {
                 servers = try await serversService.getServers()
+                filteredServers = servers
                 
                 view?.updateSnapshot()
                 view?.hideLoading()
@@ -62,5 +71,18 @@ class HomePresenter {
                 view?.showNetworkFailure(title: "Network error", message: error.localizedDescription)
             }
         }
+    }
+    
+    private func filter() {
+        switch filterType {
+        case .distance:
+            filteredServers = servers.sorted(by: { $0.distance < $1.distance })
+        case .alphabetical:
+            filteredServers = servers.sorted(by: { $0.name < $1.name })
+        case .none:
+            break
+        }
+        
+        view?.updateSnapshot()
     }
 }

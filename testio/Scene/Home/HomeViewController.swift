@@ -110,7 +110,22 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func filter() {
-        presenter.filter()
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let distanceAction = UIAlertAction(title: "By distance", style: .default) { [weak self] _ in
+            self?.presenter.filterType = .distance
+        }
+        alert.addAction(distanceAction)
+        
+        let alphabeticalAction = UIAlertAction(title: "Alphabetical", style: .default) { [weak self] _ in
+            self?.presenter.filterType = .alphabetical
+        }
+        alert.addAction(alphabeticalAction)
+        
+        let calncelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(calncelAction)
+        
+        present(alert, animated: true)
     }
     
     @objc private func logout() {
@@ -124,7 +139,7 @@ extension HomeViewController: HomeView {
     func updateSnapshot() {
         var snapshot = Snapshot()
         snapshot.appendSections([0])
-        snapshot.appendItems(presenter.servers.map { $0.id })
+        snapshot.appendItems(presenter.filteredServers.map { $0.id })
         
         dataSource.apply(snapshot)
     }
