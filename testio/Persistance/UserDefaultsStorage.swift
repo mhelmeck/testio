@@ -6,15 +6,6 @@ class UserDefaultsStorage: LocalStorage {
     
     private let userDefaults = UserDefaults.standard
     
-    // MARK: - Init
-    
-    init() {
-        print("my_log init UserDefaultsStorage")
-    }
-    deinit {
-        print("my_log deinit UserDefaultsStorage")
-    }
-    
     // MARK: - Api
     
     func write<T: Encodable>(_ item: T, forKey key: String) {

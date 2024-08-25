@@ -14,12 +14,6 @@ class DefaultAuthService: AuthService {
     init(network: Network, storage: SecureStorage) {
         self.network = network
         self.storage = storage
-        
-        print("my_log init DefaultAuthService")
-    }
-    
-    deinit {
-        print("my_log deinit DefaultAuthService")
     }
     
     // MARK: - Api

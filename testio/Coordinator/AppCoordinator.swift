@@ -12,12 +12,6 @@ class AppCoordinator: Coordinator, LoginCoordinatorDelegate, HomeCoordinatorDele
     init(root: UINavigationController, dependencies: DependencyContainer ) {
         self.root = root
         self.dependencies = dependencies
-        
-        print("my_log init AppCoordinator")
-    }
-    
-    deinit {
-        print("my_log deinit AppCoordinator")
     }
     
     // MARK: - Methods

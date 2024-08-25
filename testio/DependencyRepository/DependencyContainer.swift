@@ -4,15 +4,6 @@ class DependencyContainer: DependencyRepository {
     
     private var dependencies: [String: Any] = [:]
     
-    // MARK: - Init
-    
-    init() {
-        print("my_log init DependencyContainer")
-    }
-    deinit {
-        print("my_log deinit DependencyContainer")
-    }
-    
     // MARK: - Api
     
     func register<T>(dependency: T, for type: T.Type) {

@@ -6,15 +6,6 @@ class KeychainStorage: SecureStorage {
     // MARK: - Properties
     
     private let service = "com.testio.keychain_storage"
-
-    // MARK: - Init
-    
-    init() {
-        print("my_log init KeychainStorage")
-    }
-    deinit {
-        print("my_log deinit KeychainStorage")
-    }
     
     // MARK: - Api
     

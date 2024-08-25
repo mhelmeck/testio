@@ -1,16 +1,7 @@
 import Foundation
 
 class UrlSessionNetwork: Network {
-    
-    // MARK: - Init
-    
-    init() {
-        print("my_log init UrlSessionNetwork")
-    }
-    deinit {
-        print("my_log deinit UrlSessionNetwork")
-    }
-    
+        
     // MARK: - Api
     
     func get<T: Decodable>(with request: URLRequest) async throws -> T {
