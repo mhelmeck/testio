@@ -4,7 +4,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Properties
     
-    let viewModel: LoginViewModel
+    var presenter: LoginPresenter!
     
     private let backgroundImageView = LoginViewController.buildImageView(
         name: "background.pdf",
@@ -28,24 +28,11 @@ class LoginViewController: UIViewController {
         isSecureTextEntry: true
     )
     
-    
-//    private let loginButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.setTitle("Log in", for: .normal)
-//        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-//        button.backgroundColor = UIColor.systemBlue
-//        button.tintColor = .white
-//        button.layer.cornerRadius = 10
-//        
-//        return button
-//    }()
+    private let loginButton = LoginViewController.buildButton()
     
     // MARK: - Init
     
-    init(viewModel: LoginViewModel) {
-        self.viewModel = viewModel
-        
+    init() {
         super.init(nibName: nil, bundle: nil)
         
         print("my_log init LoginViewController")
@@ -84,8 +71,8 @@ class LoginViewController: UIViewController {
             logoImageView,
             usernameTextField,
             passwordTextField,
-            backgroundImageView
-//            loginButton
+            loginButton,
+            backgroundImageView,
         ].forEach(view.addSubview)
     }
     
@@ -103,11 +90,11 @@ class LoginViewController: UIViewController {
             passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
             passwordTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 16),
             passwordTextField.heightAnchor.constraint(equalToConstant: 40),
-//            
-//            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-//            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-//            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 40),
-//            loginButton.heightAnchor.constraint(equalToConstant: 50)
+            
+            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 40),
+            loginButton.heightAnchor.constraint(equalToConstant: 40),
             
             backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -118,9 +105,50 @@ class LoginViewController: UIViewController {
     private func setDelegatesAndTargets() {
         usernameTextField.delegate = self
         passwordTextField.delegate = self
-//        loginButton.addTarget(viewModel, action: #selector(viewModel.login), for: .touchUpInside)
+        
+        usernameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+    }
+    
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        if textField == usernameTextField {
+            presenter.username = textField.text ?? ""
+        } else if textField == passwordTextField {
+            presenter.password = textField.text ?? ""
+        }
+    }
+    
+    @objc private func login() {
+        presenter.login()
     }
 }
+
+// MARK: - LoginView
+
+extension LoginViewController: LoginView {
+    func showLoading() {
+        view.isUserInteractionEnabled = false
+    }
+    
+    func hideLoading() {
+        view.isUserInteractionEnabled = true
+    }
+    
+    func enableLoginButton() {
+        loginButton.isEnabled = true
+    }
+    
+    func disableLoginButton() {
+        loginButton.isEnabled = false
+    }
+    
+    func showLoginFailure(error: String) {
+        
+    }
+}
+
+// MARK: - UITextFieldDelegate
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {

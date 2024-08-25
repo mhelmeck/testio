@@ -45,11 +45,13 @@ class AppCoordinator: Coordinator, LoginCoordinatorDelegate, HomeCoordinatorDele
     }
     
     func showLogin() {
-        let vm = LoginViewModel(
+        let vc = LoginViewController()
+        let presenter = LoginPresenter(
+            view: vc,
             coordinator: self,
             authService: dependencies.get()
         )
-        let vc = LoginViewController(viewModel: vm)
+        vc.presenter = presenter
         
         root.viewControllers = [vc]
     }

@@ -15,6 +15,10 @@ extension UIColor {
         Self.fromRGB(red: 60, green: 60, blue: 67, alpha: 1)
     }
     
+    static var loginButtonColor: UIColor {
+        Self.fromRGB(red: 70, green: 135, blue: 255, alpha: 1)
+    }
+    
     private static func fromRGB(red: Int, green: Int, blue: Int, alpha: CGFloat = 1.0) -> UIColor {
         return UIColor(
             red: CGFloat(red) / 255.0,
@@ -28,7 +32,7 @@ extension UIColor {
 // MARK: - UIFont
 
 extension UIFont {
-    static var textFieldFont: UIFont {
+    static var loginTextFont: UIFont {
         .systemFont(ofSize: 17, weight: .regular)
     }
 }
