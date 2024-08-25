@@ -5,6 +5,6 @@ struct Credentials: Encodable {
     let password: String
     
     func isValid() -> Bool {
-        username == "tesonet" && password == "partyanimal"
+        username == "rty" && password == "partyanimal"
     }
 }

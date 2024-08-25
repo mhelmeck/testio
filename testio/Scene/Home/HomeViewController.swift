@@ -1,15 +1,15 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    typealias DataSource = UICollectionViewDiffableDataSource<Int, Server.ID>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Int, Server.ID>
     
     // MARK: - Properties
     
     var presenter: HomePresenter!
-    var headerView: HomeHeaderView?
 
+    private var collectionView: UICollectionView!
     private var dataSource: DataSource!
-
-    private let collectionView = buildListCollectionView()
     
     private let backgroundImageView = buildImageView(
         name: "background.pdf",
@@ -51,21 +51,30 @@ class HomeViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-        let cellRegistration = UICollectionView.CellRegistration(handler: cellRegistrationHandler)
-        dataSource = DataSource(collectionView: collectionView) { 
-            (collectionView: UICollectionView, indexPath: IndexPath, itemIdentifier: Server.ID) in
+        collectionView = UIViewController.buildListCollectionView()
+        
+        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Server.ID> { [weak self] (cell, _, item) in
+            guard let server = self?.presenter.server(withId: item) else {
+                return
+            }
+            
+            var contentConfiguration = cell.homeCellConfiguration()
+            contentConfiguration.server = server.name
+            contentConfiguration.distance = server.distance
+            
+            cell.contentConfiguration = contentConfiguration
+        }
+        dataSource = DataSource(collectionView: collectionView) { (collectionView, indexPath, itemIdentifier) -> UICollectionViewListCell? in
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
         }
         
-        let headerRegistration = UICollectionView.SupplementaryRegistration(
-            elementKind: HomeHeaderView.elementKind,
-            handler: supplementaryRegistrationHandler
-        )
-        dataSource.supplementaryViewProvider = { supplementaryView, elementKind, indexPath in
-            return self.collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
+        let headerRegistration = UICollectionView.SupplementaryRegistration<HomeHeaderView>(
+            elementKind: UICollectionView.elementKindSectionHeader
+        ) { _, _, _ in }
+        dataSource.supplementaryViewProvider = { [weak self] collectionView, _, indexPath -> UICollectionReusableView? in
+            return self?.collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
         }
         
-        collectionView.dataSource = dataSource
         collectionView.delegate = self
     }
     
