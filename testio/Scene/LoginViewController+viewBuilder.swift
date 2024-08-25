@@ -1,6 +1,15 @@
 import UIKit
 
 extension LoginViewController {
+    static func buildStackView() -> UIStackView {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 16.0
+        
+        return stackView
+    }
+    
     static func buildImageView(name: String, contentMode: UIView.ContentMode) -> UIImageView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -29,6 +38,7 @@ extension LoginViewController {
         )
         textField.isSecureTextEntry = isSecureTextEntry
         textField.layer.cornerRadius = 10.0
+        textField.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
         
         textField.tintColor = .textFieldPlaceholderColor
         textField.setIcon(UIImage(systemName: iconName)!)
@@ -43,7 +53,7 @@ extension LoginViewController {
         button.titleLabel?.font = .loginTextFont
         button.tintColor = .white
         button.backgroundColor = .loginButtonColor
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = 10.0    
         button.isEnabled = false
         
         return button

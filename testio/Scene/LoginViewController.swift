@@ -6,6 +6,8 @@ class LoginViewController: UIViewController {
     
     var presenter: LoginPresenter!
     
+    private let stackView = buildStackView()
+    
     private let backgroundImageView = buildImageView(
         name: "background.pdf",
         contentMode: .scaleAspectFill
@@ -70,11 +72,17 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
         
         [
-            backgroundImageView,
             logoImageView,
             usernameTextField,
             passwordTextField,
-            loginButton,
+            loginButton
+        ].forEach(stackView.addArrangedSubview)
+        stackView.setCustomSpacing(40.0, after: logoImageView)
+        stackView.setCustomSpacing(24.0, after: passwordTextField)
+        
+        [
+            backgroundImageView,
+            stackView,
             activityIndicator
         ].forEach(view.addSubview)
     }
@@ -85,23 +93,9 @@ class LoginViewController: UIViewController {
             backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80.0),
-            
-            usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
-            usernameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
-            usernameTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 40.0),
-            usernameTextField.heightAnchor.constraint(equalToConstant: 40.0),
-            
-            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
-            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
-            passwordTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 16.0),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 40.0),
-            
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40.0),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40.0),
-            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 40.0),
-            loginButton.heightAnchor.constraint(equalToConstant: 40.0),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 153.0),
             
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
