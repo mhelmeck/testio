@@ -57,7 +57,7 @@ class LoginPresenter {
     }
     
     private func getValidatedCredentials() -> Credentials? {
-        let credentials = Credentials()
+        let credentials = Credentials(username: username, password: password)
         guard credentials.isValid() else {
             return nil
         }
