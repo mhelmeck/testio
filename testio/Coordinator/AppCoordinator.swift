@@ -34,12 +34,14 @@ class AppCoordinator: Coordinator, LoginCoordinatorDelegate, HomeCoordinatorDele
     // MARK: - Api
     
     func showHome() {
-        let vm = HomeViewModel(
+        let vc = HomeViewController()
+        let presenter = HomePresenter(
+            view: vc,
             coordinator: self,
             authService: dependencies.get(),
             serversService: dependencies.get()
         )
-        let vc = HomeViewController(viewModel: vm)
+        vc.presenter = presenter
         
         root.viewControllers = [vc]
     }

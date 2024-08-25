@@ -1,13 +1,5 @@
 import Foundation
 
-protocol LoginView: AnyObject {
-    func showLoading()
-    func hideLoading()
-    func enableLoginButton()
-    func disableLoginButton()
-    func showLoginFailure(title: String, message: String)
-}
-
 class LoginPresenter {
     
     // MARK: - Properties
@@ -59,13 +51,13 @@ class LoginPresenter {
                 view?.hideLoading()
             } catch {
                 view?.hideLoading()
-                view?.showLoginFailure(title: "Login Failed", message: error.localizedDescription)
+                view?.showLoginFailure(title: "Login failed", message: error.localizedDescription)
             }
         }
     }
     
     private func getValidatedCredentials() -> Credentials? {
-        let credentials = Credentials(username: username, password: password)
+        let credentials = Credentials()
         guard credentials.isValid() else {
             return nil
         }

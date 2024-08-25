@@ -1,16 +1,23 @@
 import Foundation
 
-class HomeViewModel {
+class HomePresenter {
     
     // MARK: - Properties
     
     private let authService: AuthService
     private let serversService: ServersService
     private weak var coordinator: HomeCoordinatorDelegate?
+    private weak var view: HomeView?
     
     // MARK: - Init
     
-    init(coordinator: HomeCoordinatorDelegate, authService: AuthService, serversService: ServersService) {
+    init(
+        view: HomeView,
+        coordinator: HomeCoordinatorDelegate,
+        authService: AuthService,
+        serversService: ServersService
+    ) {
+        self.view = view
         self.coordinator = coordinator
         self.authService = authService
         self.serversService = serversService
@@ -25,18 +32,26 @@ class HomeViewModel {
     
     // MARK: - Methods
     
-    @objc func filter() {
+    func filter() {
         
     }
     
-    @objc func logout() {
+    func logout() {
         authService.logout()
         coordinator?.showLogin()
     }
     
     private func getServers() {
-        Task {
-            try? await serversService.getServers()
+        view?.showLoading()
+        Task { @MainActor in
+            do {
+                let servers = try await serversService.getServers()
+                
+                view?.hideLoading()
+            } catch {
+                view?.hideLoading()
+                view?.showNetworkFailure(title: "Network error", message: error.localizedDescription)
+            }
         }
     }
 }

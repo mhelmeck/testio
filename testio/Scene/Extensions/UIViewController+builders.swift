@@ -1,6 +1,6 @@
 import UIKit
 
-extension LoginViewController {
+extension UIViewController {
     static func buildStackView() -> UIStackView {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,7 +23,7 @@ extension LoginViewController {
         placeholder: String,
         iconName: String,
         isSecureTextEntry: Bool
-    ) -> UITextField {        
+    ) -> UITextField {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .textFieldBackgroundColor
@@ -53,7 +53,7 @@ extension LoginViewController {
         button.titleLabel?.font = .loginTextFont
         button.tintColor = .white
         button.backgroundColor = .loginButtonColor
-        button.layer.cornerRadius = 10.0    
+        button.layer.cornerRadius = 10.0
         button.isEnabled = false
         
         return button
